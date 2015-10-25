@@ -7,7 +7,7 @@
 [![license](https://img.shields.io/npm/l/music.scales.svg)](https://www.npmjs.com/package/music.scales)
 [![music.kit](https://img.shields.io/badge/music-kit-yellow.svg)](https://www.npmjs.com/package/music.kit)
 
-A dictionary of music scales. About 100 scales in less of 10kb of code:
+A dictionary of music scales:
 
 ```js
 var scales = require('music.scales')
@@ -17,6 +17,13 @@ phrygian('Db') // => [ 'Db', 'Ebb', 'Fb', 'Gb', 'Ab', 'Bbb', 'Cb' ]
 ```
 
 This is part of [music.kit](https://www.npmjs.com/package/music.kit)
+
+## Features
+
+- Build scales from names
+- Get scale intervals
+- Get all available names
+- Find scale name by notes
 
 ## Install
 
@@ -55,6 +62,15 @@ Use the `names` function to get scale names. Passing `true` as first argument re
 ```js
 scales.names() // => ['major', ...] (89 names)
 scales.names(true) // => ['major', ...] (108 names)
+```
+
+#### Find scale name
+
+The `find` function get the scale name from a list of notes. All the notes of the scale must be inside the list and the first note of the list is considered the tonic:
+
+```js
+scales.find('c g a b e f b5 d') // => 'major'
+scales.find('d c g a b e f b5 d') // => 'dorian'
 ```
 
 ## License

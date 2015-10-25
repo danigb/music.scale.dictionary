@@ -1,6 +1,6 @@
 {
   "name": "music.scaless",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A dictionary of music scales",
   "main": "index.js",
   "scripts": {
@@ -29,7 +29,8 @@
   },
   "homepage": "https://github.com/danigb/music.scales#readme",
   "dependencies": {
-    "music.harmonizer": "0.0.4"
+    "music.harmonizer": "0.0.4",
+    "music.pitchset": "0.0.2"
   },
   "devDependencies": {
     "vows": "^0.8.1"

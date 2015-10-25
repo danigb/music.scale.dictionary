@@ -1,9 +1,10 @@
 CHANGELOG
 
-[0.0.1] First version: scales and names
-
+ [0.0.2] Add scales.find function
+ [0.0.1] First version: scales and names
 
 DIST
+[0.0.2] 13435 (12.2kb)
 [0.0.1] 11167
 
 BENCHMARKS

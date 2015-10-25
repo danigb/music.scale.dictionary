@@ -3,6 +3,7 @@
 var data = require('./dict/scales.json')
 var aliases = require('./dict/aliases.json')
 var harmonizer = require('music.harmonizer')
+var pitchSet = require('music.pitchset')
 
 /**
  * Get a scale from a name and a tonic
@@ -20,8 +21,7 @@ var harmonizer = require('music.harmonizer')
  * phrygian('C') // => [ 'C', 'Db', 'Eb', 'F', 'G', 'Ab', 'Bb' ]
  */
 function scales (name, tonic) {
-  if (arguments.length === 0) scales
-  else if (arguments.length === 1) return function (t) { return scales(name, t) }
+  if (arguments.length === 1) return function (t) { return scales(name, t) }
 
   var intervals = data[name] || data[aliases[name]]
   return harmonizer(intervals, tonic)
@@ -38,6 +38,27 @@ function scales (name, tonic) {
  */
 scales.names = function (alias) {
   return alias ? Object.keys(data).concat(Object.keys(aliases)) : Object.keys(data)
+}
+
+var reverse = null
+function buildReverse (data) {
+  return Object.keys(data).reduce(function (rev, name) {
+    rev[pitchSet.asBinary(data[name])] = name
+    return rev
+  }, {})
+}
+/**
+ * Find a scale name by notes
+ *
+ * @name find
+ * @function
+ * @param {String|Array} notes - the scale notes
+ * @return {String} the scale name
+ */
+scales.find = function (notes) {
+  reverse = reverse || buildReverse(data)
+  var binary = pitchSet.asBinary(notes)
+  return reverse[binary]
 }
 
 module.exports = scales
