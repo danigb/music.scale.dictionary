@@ -5,6 +5,8 @@ var aliases = require('./dict/aliases.json')
 var harmonizer = require('music.harmonizer')
 var pitchSet = require('music.pitchset')
 
+var scale = {}
+
 /**
  * Get a scale from a name and a tonic
  *
@@ -16,12 +18,12 @@ var pitchSet = require('music.pitchset')
  * @return {Array} a list of notes or intervals (or empty array if scale not found)
  *
  * @example
- * scales('major', 'C') // => ['C', 'D', 'E', 'F', 'G', 'A', 'B']
- * var phrygian = scales('phrygian')
+ * scale.get('major', 'C') // => ['C', 'D', 'E', 'F', 'G', 'A', 'B']
+ * var phrygian = scale.get('phrygian')
  * phrygian('C') // => [ 'C', 'Db', 'Eb', 'F', 'G', 'Ab', 'Bb' ]
  */
-function scales (name, tonic) {
-  if (arguments.length === 1) return function (t) { return scales(name, t) }
+scale.get = function (name, tonic) {
+  if (arguments.length === 1) return function (t) { return scale.get(name, t) }
 
   var intervals = data[name] || data[aliases[name]]
   return harmonizer(intervals, tonic)
@@ -35,8 +37,10 @@ function scales (name, tonic) {
  * @param {Boolean} aliases - if true return aliases names
  * @return {Array} an array of scale names
  *
+ * @example
+ * scale.names() // => ['major', ...]
  */
-scales.names = function (alias) {
+scale.names = function (alias) {
   return alias ? Object.keys(data).concat(Object.keys(aliases)) : Object.keys(data)
 }
 
@@ -55,10 +59,10 @@ function buildReverse (data) {
  * @param {String|Array} notes - the scale notes
  * @return {String} the scale name
  */
-scales.find = function (notes) {
+scale.find = function (notes) {
   reverse = reverse || buildReverse(data)
   var binary = pitchSet.asBinary(notes)
   return reverse[binary]
 }
 
-module.exports = scales
+module.exports = scale

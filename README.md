@@ -1,16 +1,16 @@
-# music.scales
+# music.scale.dictionary
 
-[![Build Status](https://travis-ci.org/danigb/music.scales.svg?branch=master)](https://travis-ci.org/danigb/music.scales)
-[![Code Climate](https://codeclimate.com/github/danigb/music.scales/badges/gpa.svg)](https://codeclimate.com/github/danigb/music.scales)
+[![Build Status](https://travis-ci.org/danigb/music.scale.dictionary.svg?branch=master)](https://travis-ci.org/danigb/music.scale.dictionary)
+[![Code Climate](https://codeclimate.com/github/danigb/music.scale.dictionary/badges/gpa.svg)](https://codeclimate.com/github/danigb/music.scale.dictionary)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
-[![npm version](https://img.shields.io/npm/v/music.scales.svg)](https://www.npmjs.com/package/music.scales)
-[![license](https://img.shields.io/npm/l/music.scales.svg)](https://www.npmjs.com/package/music.scales)
+[![npm version](https://img.shields.io/npm/v/music.scale.dictionary.svg)](https://www.npmjs.com/package/music.scale.dictionary)
+[![license](https://img.shields.io/npm/l/music.scale.dictionary.svg)](https://www.npmjs.com/package/music.scale.dictionary)
 [![music.kit](https://img.shields.io/badge/music-kit-yellow.svg)](https://www.npmjs.com/package/music.kit)
 
 A dictionary of music scales:
 
 ```js
-var scales = require('music.scales')
+var scales = require('music.scale.dictionary')
 var phrygian = scales('phrygian')
 phrygian('C') // => [ 'C', 'Db', 'Eb', 'F', 'G', 'Ab', 'Bb' ]
 phrygian('Db') // => [ 'Db', 'Ebb', 'Fb', 'Gb', 'Ab', 'Bbb', 'Cb' ]
@@ -27,7 +27,7 @@ This is part of [music.kit](https://www.npmjs.com/package/music.kit)
 
 ## Install
 
-Via npm: `npm i --save music.scales` or grab the file (10kb minified) from [dist](https://raw.githubusercontent.com/danigb/music.scales/master/dist/music.scales.min.js) folder.
+Via npm: `npm i --save music.scale.dictionary` or grab the file (10kb minified) from [dist](https://raw.githubusercontent.com/danigb/music.scale.dictionary/master/dist/music.scale.dictionary.min.js) folder.
 
 ## Usage
 
