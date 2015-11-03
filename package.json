@@ -1,6 +1,6 @@
 {
   "name": "music.scale.dictionary",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A dictionary of music scales",
   "main": "index.js",
   "scripts": {

@@ -6,26 +6,28 @@ var harmonizer = require('music.harmonizer')
 var pitchSet = require('music.pitchset')
 
 var scale = {}
+var NAME = /^([^\s]+)\s(.*)$/
 
 /**
- * Get a scale from a name and a tonic
+ * Get a scale from a name. If the name contains the tonic, an array of notes
+ * is returned. Otherwise an array of intervals is returned.
  *
- * This function always return an array, even if its empty. This function is
- * currified so it can be partially applied (see examples)
+ * This function always return an array, even if its empty.
  *
  * @param {String} name - the scale name
- * @param {String|Array} tonic - the tonic of the scale (or false to get intervals)
  * @return {Array} a list of notes or intervals (or empty array if scale not found)
  *
  * @example
- * scale.get('major', 'C') // => ['C', 'D', 'E', 'F', 'G', 'A', 'B']
- * var phrygian = scale.get('phrygian')
- * phrygian('C') // => [ 'C', 'Db', 'Eb', 'F', 'G', 'Ab', 'Bb' ]
+ * scale.get('C major') // => ['C', 'D', 'E', 'F', 'G', 'A', 'B']
+ * scale.get('phrygian') // => ['1P', '2m', '3m', '4P', '5P', '6m', '7m']
  */
-scale.get = function (name, tonic) {
-  if (arguments.length === 1) return function (t) { return scale.get(name, t) }
+scale.get = function (name) {
+  var m = NAME.exec(name)
+  var tonic = m ? m[1] : false
+  var type = (m ? m[2] : name)
+  type = type ? type.trim().toLowerCase() : type
 
-  var intervals = data[name] || data[aliases[name]]
+  var intervals = data[type] || data[aliases[type]]
   return harmonizer(intervals, tonic)
 }
 
